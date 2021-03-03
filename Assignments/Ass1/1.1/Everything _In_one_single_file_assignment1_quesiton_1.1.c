@@ -72,12 +72,29 @@ void _inputComplexNumber(complx _ToSet)
     printf("Please enter N = %ld space seperated integers to input a Complex number of %ld dimentions\n",_ToSet->N,_ToSet->N);
     for(long int i=0;i<_ToSet->N;i++)
     {
-        scanf("%ld",&_ToSet->_values[i]);// takes the complex number and inputs values to it.
+        scanf("%lf",&_ToSet->_values[i]);// takes the complex number and inputs values to it.
     }
 }
 
 void _addComplexNumber (complx a, complx b, complx c)// such that c = a+b, where + is complex addition. Pointers to a,b,c are inputted to function.
 {
+    printf ("\n The input to the subtract Function was -> \n");
+    puts("a = ");
+    for(int i=0;i<a->N;i++)
+        {
+            printf("%lf ",a->_values[i]);
+        }
+    puts(" b = ");
+    for(int i=0;i<b->N;i++)
+        {
+            printf("%lf ",b->_values[i]);
+        }
+    puts(" c= ");
+    for(int i=0;i<c->N;i++)
+        {
+            printf("%lf ",c->_values[i]);
+        }
+    puts(" ");
     for(long int i=0;i<a->N;i++)
     {
         c->_values[i]=a->_values[i]+b->_values[i];
@@ -86,6 +103,23 @@ void _addComplexNumber (complx a, complx b, complx c)// such that c = a+b, where
 
 void _subtractComplexNumber (complx a, complx b, complx c) //such that c = a-b, where - is complex subtraction. Pointers to a,b,c are inputted to the function.
 {
+    printf ("\n The input to the subtract Function was -> \n");
+    puts("a =");
+    for(int i=0;i<a->N;i++)
+        {
+            printf("%lf ",a->_values[i]);
+        }
+    puts(" b = ");
+    for(int i=0;i<b->N;i++)
+        {
+            printf("%lf ",b->_values[i]);
+        }
+    puts(" c= ");
+    for(int i=0;i<c->N;i++)
+        {
+            printf("%lf ",c->_values[i]);
+        }
+    puts("");
     for(long int i=0;i<a->N;i++)
     {
         c->_values[i]=a->_values[i]-b->_values[i];
@@ -94,16 +128,35 @@ void _subtractComplexNumber (complx a, complx b, complx c) //such that c = a-b, 
 
 double _modulusOfComplexNumber (complx a) // takes input of a pointer to a complex number and returns the modulus value
 {
-    double sum =0;
-    for(long int i=0;i<a->N;i++)
+
+    printf ("\n The input to the Modulus Function was -> \n");
+    for(int i=0;i<a->N;i++)
+        {
+            printf("%lf ",a->_values[i]);
+        }
+    puts(" ");
+
+    double sum =0.0;
+    for(long int i=0;i<(a->N);i++)
     {
-        sum+=((a->_values[i])*(a->_values[i]));
+        sum=sum + ((a->_values[i])*(a->_values[i]));
     }
     return sqrt(sum);
 }
 
 double _dotProdOfComplexNumber (complx a, complx b)// takes input of a pointer to 2 complex numbers and returns the dot product.
 {
+    printf ("\n The input to the Dot product Function was -> \n");
+    for(int i=0;i<a->N;i++)
+        {
+            printf("%lf ",a->_values[i]);
+        }
+    puts(" ");
+    for(int i=0;i<b->N;i++)
+        {
+            printf("%lf ",b->_values[i]);
+        }
+    puts(" ");
     double sum=0;
     for(long int i=0;i<a->N;i++)
     {
@@ -118,7 +171,7 @@ void _printComplexNumber(complx a)
     puts("The Complex number which is the answer is : ");
     for(long int i=0; i<a->N;i++)
     {
-        printf("%d ",a->_values[i]);
+        printf("%lf ",a->_values[i]);
     }
 }
 void _freeComplexNumber(complx ab)
@@ -156,14 +209,14 @@ int main()
         printf ("\n Input was read as -> \n");
         for(int i=0;i<a.N;i++)
         {
-            printf("%ld ",a._values[i]);
+            printf("%lf ",a._values[i]);
         }
         puts(" ");
         complex b; _initializeComplexNumber(N, &b); _inputComplexNumber(&b);
         printf ("\n Input was read as -> \n");
         for(int i=0;i<a.N;i++)
         {
-            printf("%ld ",a._values[i]);
+            printf("%lf ",a._values[i]);
         }
         puts(" ");
         complex c; _initializeComplexNumber(N, &c);
@@ -182,14 +235,14 @@ int main()
         printf ("\n Input was read as -> \n");
         for(int i=0;i<a.N;i++)
         {
-            printf("%ld ",a._values[i]);
+            printf("%lf ",a._values[i]);
         }
         puts(" ");
         complex b; _initializeComplexNumber(N, &b); _inputComplexNumber(&b);
         printf ("\n Input was read as -> \n");
         for(int i=0;i<a.N;i++)
         {
-            printf("%ld ",a._values[i]);
+            printf("%lf ",a._values[i]);
         }
         puts(" ");
         complex c; _initializeComplexNumber(N, &c);
@@ -208,13 +261,13 @@ int main()
         printf ("\n Input was read as -> \n");
         for(int i=0;i<a.N;i++)
         {
-            printf("%ld ",a._values[i]);
+            printf("%lf ",a._values[i]);
         }
         puts(" ");
         //complex b; _initializeComplexNumber(N, &b); _inputComplexNumber(&b);
         complex c; _initializeComplexNumber(N, &c);
         double modulus = _modulusOfComplexNumber(&a);
-        printf("\nThe Modulus of the complex number entered is = %ld \n ",modulus);
+        printf("\nThe Modulus of the complex number entered is = %lf \n ",modulus);
         _freeComplexNumber(&a);
         //_freeComplexNumber(&b);
         _freeComplexNumber(&c);
@@ -228,19 +281,19 @@ int main()
         printf ("\n Input was read as -> \n");
         for(int i=0;i<a.N;i++)
         {
-            printf("%ld ",a._values[i]);
+            printf("%lf ",a._values[i]);
         }
         puts(" ");
         complex b; _initializeComplexNumber(N, &b); _inputComplexNumber(&b);
         printf ("\n Input was read as -> \n");
         for(int i=0;i<a.N;i++)
         {
-            printf("%ld ",a._values[i]);
+            printf("%lf ",a._values[i]);
         }
         puts(" ");
         complex c; _initializeComplexNumber(N, &c);
         double dot_prod = _dotProdOfComplexNumber(&a, &b);
-        printf("\nThe Dot Product of the complex number entered is = %ld \n",dot_prod);
+        printf("\nThe Dot Product of the complex number entered is = %lf \n",dot_prod);
         _freeComplexNumber(&a);
         _freeComplexNumber(&b);
         _freeComplexNumber(&c);
