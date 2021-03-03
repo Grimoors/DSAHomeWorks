@@ -1,7 +1,7 @@
 #ifndef __POLYELEM
 #define __POLYELEM
 
-typedef PolyTerm Poly;
+typedef struct PolyTerm* Poly;
 
 struct PolyTerm
 {

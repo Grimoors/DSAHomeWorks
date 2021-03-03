@@ -10,6 +10,7 @@ struct complex
     double* _values;
 };
 
+typedef struct complex* complx;
 typedef struct complex complex;
 
 #endif

@@ -3,8 +3,7 @@
 
 #include "PolyElem.h"
 
-typedef PolyTerm Pterm;
-typedef PolyTerm* Poly;
+typedef struct PolyTerm Pterm;
 
 
 
