@@ -10,7 +10,7 @@
 /*
 *
 *           DEFINIES THE COMPLEX NO. AS AN INTEGER ENTRY WITH AN ASSOCIATED WITH A DOUBLE ARRAY
-           
+                                    this defines dimentions of complex no.              this stores the elements.
 
            //Diagram of Struct\\
             ________________
@@ -72,7 +72,7 @@ void _inputComplexNumber(complx _ToSet)
     printf("Please enter N = %ld space seperated integers to input a Complex number of %ld dimentions\n",_ToSet->N,_ToSet->N);
     for(long int i=0;i<_ToSet->N;i++)
     {
-        scanf("%ld",_ToSet->_values[i]);// takes the complex number and inputs values to it.
+        scanf("%ld",&_ToSet->_values[i]);// takes the complex number and inputs values to it.
     }
 }
 
@@ -97,7 +97,7 @@ double _modulusOfComplexNumber (complx a) // takes input of a pointer to a compl
     double sum =0;
     for(long int i=0;i<a->N;i++)
     {
-        sum+=(a->_values[i]*a->_values[i]);
+        sum+=((a->_values[i])*(a->_values[i]));
     }
     return sqrt(sum);
 }
@@ -153,7 +153,19 @@ int main()
     case 'a':
     {
         complex a; _initializeComplexNumber(N, &a); _inputComplexNumber(&a);
+        printf ("\n Input was read as -> \n");
+        for(int i=0;i<a.N;i++)
+        {
+            printf("%ld ",a._values[i]);
+        }
+        puts(" ");
         complex b; _initializeComplexNumber(N, &b); _inputComplexNumber(&b);
+        printf ("\n Input was read as -> \n");
+        for(int i=0;i<a.N;i++)
+        {
+            printf("%ld ",a._values[i]);
+        }
+        puts(" ");
         complex c; _initializeComplexNumber(N, &c);
         _addComplexNumber(&a, &b, &c);
         _printComplexNumber(&c);
@@ -167,7 +179,19 @@ int main()
     case 's':
     {
         complex a; _initializeComplexNumber(N, &a); _inputComplexNumber(&a);
+        printf ("\n Input was read as -> \n");
+        for(int i=0;i<a.N;i++)
+        {
+            printf("%ld ",a._values[i]);
+        }
+        puts(" ");
         complex b; _initializeComplexNumber(N, &b); _inputComplexNumber(&b);
+        printf ("\n Input was read as -> \n");
+        for(int i=0;i<a.N;i++)
+        {
+            printf("%ld ",a._values[i]);
+        }
+        puts(" ");
         complex c; _initializeComplexNumber(N, &c);
         _subtractComplexNumber(&a, &b, &c);
         _printComplexNumber(&c);
@@ -181,6 +205,12 @@ int main()
     case 'm':
     {
         complex a; _initializeComplexNumber(N, &a); _inputComplexNumber(&a);
+        printf ("\n Input was read as -> \n");
+        for(int i=0;i<a.N;i++)
+        {
+            printf("%ld ",a._values[i]);
+        }
+        puts(" ");
         //complex b; _initializeComplexNumber(N, &b); _inputComplexNumber(&b);
         complex c; _initializeComplexNumber(N, &c);
         double modulus = _modulusOfComplexNumber(&a);
@@ -195,7 +225,19 @@ int main()
     case 'd':
     {
         complex a; _initializeComplexNumber(N, &a); _inputComplexNumber(&a);
+        printf ("\n Input was read as -> \n");
+        for(int i=0;i<a.N;i++)
+        {
+            printf("%ld ",a._values[i]);
+        }
+        puts(" ");
         complex b; _initializeComplexNumber(N, &b); _inputComplexNumber(&b);
+        printf ("\n Input was read as -> \n");
+        for(int i=0;i<a.N;i++)
+        {
+            printf("%ld ",a._values[i]);
+        }
+        puts(" ");
         complex c; _initializeComplexNumber(N, &c);
         double dot_prod = _dotProdOfComplexNumber(&a, &b);
         printf("\nThe Dot Product of the complex number entered is = %ld \n",dot_prod);
