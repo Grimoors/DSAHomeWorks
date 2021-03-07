@@ -10,7 +10,7 @@ struct queue{
     size_t Capacity;
     long int Front;
     long int Rear;
-    size_t NumItemsl;
+    size_t NumItems;
     ElementType* QArr;
 };
 
