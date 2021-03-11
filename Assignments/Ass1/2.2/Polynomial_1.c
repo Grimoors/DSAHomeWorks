@@ -36,6 +36,8 @@ void AddTerm(Poly P, unsigned int expo, double coeff)
     {
         P->Next->coeff = coeff;
     }
+
+    puts("Done");
 }
 
 void AddPolynomials(Poly A, Poly B, Poly C)
@@ -50,9 +52,8 @@ void AddPolynomials(Poly A, Poly B, Poly C)
 
     // A = A->Next;
     // B = B->Next;
-   
-         printf("\nTest Print 1\n");
 
+    //printf("\nTest Print 1\n");
 
     unsigned long int exponent = 0;
     double coefficient = 0;
@@ -62,7 +63,7 @@ void AddPolynomials(Poly A, Poly B, Poly C)
     while (A->Next != NULL || B->Next != NULL)
     {
         //Exponent taken with pref to higher one in A & B.
-        
+
         /*
         // if (A->expo >= B->expo && A != NULL)
         // {
@@ -75,80 +76,82 @@ void AddPolynomials(Poly A, Poly B, Poly C)
         // }
         */
 
-
-       
-         printf("\nTest Print 2\n");
-       int FlagNullChk=0;
-        if(A->Next==NULL)
+        //   printf("\nTest Print 2\n");
+        int FlagNullChk = 0;
+        if (A->Next == NULL)
         {
-            FlagNullChk=1;
-             exponent=B->Next->expo;
-             printf("The coefficient of B = %lf\n",B->Next->coeff);
+            FlagNullChk = 1;
+            exponent = B->Next->expo;
+            //  printf("The coefficient of B = %lf\n", B->Next->coeff);
         }
-        if(B->Next==NULL)
+        else
         {
-            FlagNullChk=1;
-            exponent=A->Next->expo;
-            printf("The coefficient of A = %lf\n",A->Next->coeff);
-        }
-
-        
-         printf("\nTest Print 2a. Flag Null check = %d \n",FlagNullChk);
-        if(FlagNullChk==0)
-        {
-           if(A->Next->expo>=B->Next->expo)
-           {
-               exponent=A->Next->expo;
-           }
-           else if(B->Next->expo>A->Next->expo)
-           {
-               exponent=B->Next->expo;
-           }
-           printf("\nTest Print 3j\n");
+            if (B->Next == NULL)
+            {
+                FlagNullChk = 1;
+                exponent = A->Next->expo;
+                //    printf("The coefficient of A = %lf\n", A->Next->coeff);
+            }
         }
 
-        printf("The exponeent = %lu", exponent);
-        
+        //  printf("\nTest Print 2a. Flag Null check = %d \n", FlagNullChk);
+        if (FlagNullChk == 0)
+        {
+            if (A->Next->expo >= B->Next->expo)
+            {
+                exponent = A->Next->expo;
+            }
+            else if (B->Next->expo > A->Next->expo)
+            {
+                exponent = B->Next->expo;
+            }
+            //    printf("\nTest Print 3j\n");
+        }
+
+        // printf("The exponeent = %lu", exponent);
 
         FlagA = 0, FlagB = 0;
         //Coefficient is added according to presence;
 
-        if (A->Next!=NULL && A->Next->expo == exponent)
+        if (A->Next != NULL && A->Next->expo == exponent)
         {
             FlagA = 1;
-            coefficient+=A->Next->coeff;
-            printf("\nTest Print 4\n");
+            coefficient += A->Next->coeff;
+            //   printf("\nTest Print 4\n");
         }
-        if (B->Next!=NULL && B->Next->expo == exponent)
+        if (B->Next != NULL && B->Next->expo == exponent)
         {
             /* code */
             FlagB = 1;
-            coefficient+=B->Next->coeff;
-            printf("\nTest Print 5\n");
+            coefficient += B->Next->coeff;
+            // printf("\nTest Print 5\n");
         }
 
         // coefficient = (FlagA * A->coeff) + (FlagB * B->coeff);
 
         AddTerm(C, exponent, coefficient);
 
-        printf("To C, a term was added \n");
-        printf ("Polynomial C == \n");
-        PrintPoly(C);
-        printf("\nTest Print 6\n");
+        // printf("To C, a term was added \n");
+        //  printf("Polynomial C == \n");
+        //PrintPoly(C);
+        // printf("\nTest Print 6\n");
         //Next term in both is cycled according to presence
         if (FlagA == 1)
         {
             A = A->Next;
-            printf("\nTest Print 7\n");
+            //    printf("\nTest Print 7\n");
         }
         if (FlagB == 1)
         {
             B = B->Next;
-            printf("\nTest Print 8\n");
+            //  printf("\nTest Print 8\n");
         }
+        coefficient = 0.0;
     }
+
+    puts("Done");
 }
-void SubtractPolynomials( Poly A,  Poly B,  Poly C)
+void SubtractPolynomials(Poly A, Poly B, Poly C)
 { /*
   *  //Since the Polynomials are stored in Ascending order, we can write a code for this.
   *  // we will Take an empty Initialised poly C, and will add on elements in ascending order.
@@ -156,66 +159,113 @@ void SubtractPolynomials( Poly A,  Poly B,  Poly C)
   *  If some element is present in none, shall be skipped.
   * */
 
-    A = A->Next;
-    B = B->Next;
-
     unsigned long int exponent = 0;
     double coefficient = 0;
 
     int FlagA = 0, FlagB = 0;
 
-    while (A != NULL || B != NULL)
+    while (A->Next != NULL || B->Next != NULL)
     {
         //Exponent taken with pref to higher one in A & B.
-        if (A->expo >= B->expo && A != NULL)
+
+        /*
+        // if (A->expo >= B->expo && A != NULL)
+        // {
+        //     exponent = A->expo;
+        // }
+        // else
+        // {
+        //     if (B != NULL)
+        //         exponent = B->expo;
+        // }
+        */
+
+        //   printf("\nTest Print 2\n");
+        int FlagNullChk = 0;
+        if (A->Next == NULL)
         {
-            exponent = A->expo;
+            FlagNullChk = 1;
+            exponent = B->Next->expo;
+            //  printf("The coefficient of B = %lf\n", B->Next->coeff);
         }
         else
         {
-            if (C != NULL || B != NULL)
-                exponent = B->expo;
+            if (B->Next == NULL)
+            {
+                FlagNullChk = 1;
+                exponent = A->Next->expo;
+                //    printf("The coefficient of A = %lf\n", A->Next->coeff);
+            }
         }
+
+        //  printf("\nTest Print 2a. Flag Null check = %d \n", FlagNullChk);
+        if (FlagNullChk == 0)
+        {
+            if (A->Next->expo >= B->Next->expo)
+            {
+                exponent = A->Next->expo;
+            }
+            else if (B->Next->expo > A->Next->expo)
+            {
+                exponent = B->Next->expo;
+            }
+            //    printf("\nTest Print 3j\n");
+        }
+
+        // printf("The exponeent = %lu", exponent);
 
         FlagA = 0, FlagB = 0;
         //Coefficient is added according to presence;
 
-        if (A->expo >= exponent)
+        if (A->Next != NULL && A->Next->expo == exponent)
         {
             FlagA = 1;
+            coefficient += A->Next->coeff;
+            //   printf("\nTest Print 4\n");
         }
-        if (B->expo >= exponent)
+        if (B->Next != NULL && B->Next->expo == exponent)
         {
             /* code */
             FlagB = 1;
+            coefficient -= B->Next->coeff;
+            // printf("\nTest Print 5\n");
         }
-        coefficient = (FlagA * A->coeff) + (FlagB * B->coeff);
+
+        // coefficient = (FlagA * A->coeff) + (FlagB * B->coeff);
 
         AddTerm(C, exponent, coefficient);
 
+        // printf("To C, a term was added \n");
+        //  printf("Polynomial C == \n");
+        //PrintPoly(C);
+        // printf("\nTest Print 6\n");
         //Next term in both is cycled according to presence
         if (FlagA == 1)
         {
             A = A->Next;
+            //    printf("\nTest Print 7\n");
         }
         if (FlagB == 1)
         {
             B = B->Next;
+            //  printf("\nTest Print 8\n");
         }
+        coefficient = 0.0;
     }
+    puts("Done");
 }
 
 void DeleteTermByExponent(Poly P, unsigned int expo)
 {
     PtrToTerm Prev = P;
 
-    while (P->Next && P->Next->expo < expo)
+    while (P->Next && P->Next->expo > expo)
     {
         Prev = P->Next;
         P = P->Next;
     }
 
-    if (P->Next == NULL || P->Next->expo > expo)
+    if (P->Next == NULL || P->Next->expo < expo)
     {
         printf("No polynomial term with exponent %d to delete, Nothing was done successfully\n", expo);
     }
@@ -224,36 +274,74 @@ void DeleteTermByExponent(Poly P, unsigned int expo)
         Prev = P->Next;
         P->Next = P->Next->Next;
         free(Prev);
+        puts("Done");
     }
 }
 
 Poly GetMiddle(Poly P)
 {
+    Poly CopyP = P;
     PtrToTerm Output = NULL;
+    long int length = 0;
+
+    while (CopyP->Next != 0)
+    {
+        length++;
+        CopyP = CopyP->Next;
+    }
+
+    long int mid;
+    if (length % 2 == 0)
+    {
+        mid = length / 2;
+    }
+    else
+    {
+        mid = (length + 1) / 2;
+    }
+    for (; mid > 0; mid--)
+    {
+        P = P->Next;
+    }
+    Output = P;
 
     return Output;
 }
+
 void DeleteAllTerms(Poly P)
 {
+    while ((P)->Next != NULL)
+    {
+        (P)->Next->coeff = 0.0;
+    }
 }
+
 void DeletePoly(Poly *P)
 {
+    while ((*P)->Next != NULL)
+    {   Poly Temp=(*P);
+        (*P)=(*P)->Next;
+        free(Temp);
+    }
+    free (*P);
 }
+
 void PrintPoly(Poly P)
 {
     P = P->Next;
     printf("\nThe Polynomial is printed as follows\n");
     while (P != NULL)
     {
-        if(P->coeff!=0)
-        printf("(%0.2lfx^%lu)+", P->coeff, P->expo);
+        if (P->coeff != 0)
+            printf("(%0.2lfx^%lu)+", P->coeff, P->expo);
         P = P->Next;
     }
     printf(" 0\n");
 }
-Poly GetQuartile(Poly P, int x)
-{
-    PtrToTerm Output = NULL;
 
-    return Output;
-}
+// Poly GetQuartile(Poly P, int x)
+// {
+//     PtrToTerm Output = NULL;
+
+//     return Output;
+// }
