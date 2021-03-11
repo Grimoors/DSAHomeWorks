@@ -25,7 +25,7 @@
 struct complex
 {
     long int N;
-    double* _values;
+    double *_values;
 };
 
 typedef struct complex* complx;
@@ -199,6 +199,12 @@ int main()
     printf("Please input #3 letters followed by a spacebar and an integer entry to proceed. \n");
     char Operation[3] = {'\0', '\0', '\0'};
     scanf("%c%c%c %ld", &Operation[0], &Operation[1], &Operation[2], &N);
+    //scanf("%3s %ld", Operation, &N);
+    //scanf("%[A-Z] %ld", Operation, &N);//We are defining the Valid characters to input
+            //Whatever is in the square brakets is called "acceptable input"!!
+            //Takes care of things automatically.
+    //scanf("%[a-zA-Z] %ld", Operation, &N); {//CodeVault - C}
+    //scanf("%[^0-9] %ld", Operation, &N);
 
     switch (Operation[0])
     {
