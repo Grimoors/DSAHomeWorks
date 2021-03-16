@@ -2,22 +2,19 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-
 typedef struct PolyInput PolyInput;
 struct PolyInput
 {
   /* data */
   Poly A;
-  char* Name;
-  PolyInput * NextInput;
+  char *Name;
+  PolyInput *NextInput;
 };
-
-
 
 int main()
 {
   PolyInput *Inputs;
-  Inputs=(PolyInput*)malloc(sizeof(PolyInput));
+  Inputs = (PolyInput *)malloc(sizeof(PolyInput));
 
   char _Command[30];
   printf("\n Input your Command :- (exit kills the loop)\n");
@@ -37,6 +34,46 @@ int main()
     {
       if (strcmp("AddPolynomials", _Command) == 0)
       {
+        char name1[10];
+        char name2[10];
+        char name3[10];
+        scanf("%[A-Z] %[A-Z] &[A-Z] ", name1, name2, name3);
+        int AlreadyExists1 = 0;
+        int AlreadyExists2 = 0;
+        int AlreadyExists3 = 0;
+
+        PolyInput* ForA,ForB,ForC;
+        while (Inputs->NextInput != NULL)
+        {
+          if (strcmp(name1, Inputs->NextInput->Name) == 0)
+          {
+            AlreadyExists1 = 1;
+            ForA=Inputs->NextInput;
+          }
+          if (strcmp(name2, Inputs->NextInput->Name) == 0)
+          {
+            AlreadyExists2 = 1;
+            ForB =Inputs->NextInput;
+          }
+          if (strcmp(name3, Inputs->NextInput->Name) == 0)
+          {
+            AlreadyExists3 = 1;
+       
+          }
+          Inputs=Inputs->NextInput;
+        }
+        if (AlreadyExists)
+        {
+          AddTerm(Inputs->NextInput->A, x, y);
+        }
+        else
+        {
+          Inputs->NextInput = (PolyInput *)malloc(sizeof(PolyInput));
+          Inputs->NextInput->Name = (char *)malloc(sizeof(char) * 10);
+          Inputs->NextInput->Name = name;
+          Inputs->NextInput->A = InitPoly();
+          AddTerm(Inputs->NextInput->A, x, y);
+        }
 
         printf("\n Input your Command :- (exit kills the loop)\n");
         goto _StartLabel;
@@ -83,6 +120,26 @@ int main()
                 {
                   if (strcmp("PrintPoly", _Command) == 0)
                   {
+                    char name[10];
+                    scanf("%[A-Z]", name);
+                    int AlreadyExists = 0;
+                    while (Inputs->NextInput != NULL)
+                    {
+                      if (strcmp(name, Inputs->NextInput->Name) == 0)
+                      {
+                        AlreadyExists = 1;
+                        break;
+                      }
+                      Inputs=Inputs->NextInput;
+                    }
+                    if (AlreadyExists)
+                    {
+                      PrintPoly(Inputs->NextInput->A);
+                    }
+                    else
+                    {
+                      printf("\nPolynomial Does not exist\n");
+                    }
                     printf("\n Input your Command :- (exit kills the loop)\n");
                     goto _StartLabel;
                   }
@@ -94,30 +151,29 @@ int main()
                       char name[10];
                       double y;
                       unsigned long int x;
-                      scanf("%[A-Z] %ul %lf",name,x,y);
-                      int AlreadyExists=0;
-                      while(Inputs->NextInput!=NULL)
+                      scanf("%[A-Z] %ul %lf", name, x, y);
+                      int AlreadyExists = 0;
+                      while (Inputs->NextInput != NULL)
                       {
-                          if(strcmp(name,Inputs->NextInput->Name)==0)
-                          {
-                            AlreadyExists=1;
-                            break;
-                          }
+                        if (strcmp(name, Inputs->NextInput->Name) == 0)
+                        {
+                          AlreadyExists = 1;
+                          break;
+                        }
+                        Inputs=Inputs->NextInput;
                       }
-                      if(AlreadyExists)
+                      if (AlreadyExists)
                       {
-                        AddTerm(Inputs->NextInput->A,x,y);
+                        AddTerm(Inputs->NextInput->A, x, y);
                       }
                       else
                       {
-                        Inputs->NextInput=(PolyInput*)malloc(sizeof(PolyInput));
-                        Inputs->NextInput->Name=(char*)malloc(sizeof(char)*10);
-                        Inputs->NextInput->Name=name;
-                        Inputs->NextInput->A=InitPoly();
-                        AddTerm(Inputs->NextInput->A,x,y);
-
+                        Inputs->NextInput = (PolyInput *)malloc(sizeof(PolyInput));
+                        Inputs->NextInput->Name = (char *)malloc(sizeof(char) * 10);
+                        Inputs->NextInput->Name = name;
+                        Inputs->NextInput->A = InitPoly();
+                        AddTerm(Inputs->NextInput->A, x, y);
                       }
-                      
 
                       printf("\n Input your Command :- (exit kills the loop)\n");
                       goto _StartLabel;
