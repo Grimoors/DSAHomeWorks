@@ -2,11 +2,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-
+#include "utils.h"
 //Practice Code start
 Node *makeNode(int data) //Node *rootOfNew, Node *parentOfNew)
 {
-    Node *new = malloc(sizeof(Node));
+    printf("entered makenode\n");
+    Node *new =(Node*) malloc(sizeof(Node));
     // new->root = rootOfNew;
     // new->parent = parentOfNew;
     new->left = NULL;
@@ -14,14 +15,17 @@ Node *makeNode(int data) //Node *rootOfNew, Node *parentOfNew)
     new->data = data;
     //new->depth = rootOfNew->depth + 1;
     //rootOfNew->height++;
+    printf("exited makenode\n");
     return new;
 }
 
 Node *insert(Node *curr, int data)
 {
+    printf("entered insert\n");
     if (curr == NULL)
     {
-        return makeNode(data);
+        curr = makeNode(data);
+        return curr;
     }
     if (data < curr->data)
     {
@@ -31,6 +35,7 @@ Node *insert(Node *curr, int data)
     {
         curr->right = insert(curr->right, data);
     }
+    printf("exited insert\n");
 }
 
 void print(Node *curr)
@@ -285,13 +290,13 @@ Node *randomBST(int N)
                 }
                 }
                 memoizationMatrix[k] = 1;
-                output = insert(output, k + 1);
+                output = test_bst_insert(output, k + 1);
             }
         }
         else
         {
             memoizationMatrix[k] = 1;
-            output = insert(output, k + 1);
+            output = test_bst_insert(output, k + 1);
         }
     } /*  Generate random number between 0 to N-1
     Check if it has been generated before
