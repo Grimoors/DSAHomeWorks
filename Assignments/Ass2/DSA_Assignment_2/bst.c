@@ -233,6 +233,7 @@ int isbst(Node *T)
 //Problem 5
 int totalDepth(Node *Tester, int StartDepth)
 {
+    printf("entered totalDepth\n");
     int tempL = 0, tempR = 0;
     if (Tester->left != NULL)
     {
@@ -242,20 +243,25 @@ int totalDepth(Node *Tester, int StartDepth)
     {
         tempR = totalDepth(Tester->right, StartDepth + 1);
     }
+    printf("exiting totalDepth\n");
     return (tempL + tempR + StartDepth + 1);
 }
 Node *randomBST(int N)
 {
+    printf("entered randomBST\n");
     Node *output;
-    int * memoizationMatrix;
+    int *memoizationMatrix;
     memoizationMatrix = (int *)malloc(sizeof(int) * N);
+    printf("defined variables\n");
     for (int i = 0; i < N; i++)
     {
         memoizationMatrix[i] = 0;
     }
+    printf("set the memo Matrix to 0\n");
     srand(time(0));
     int randFailCount = 0;
     int quadProber = 1;
+    printf("set the random fuctions\n");
     for (int i = 0; i < N; i++)
     {
         int k = rand() % N;
@@ -269,10 +275,17 @@ Node *randomBST(int N)
             }
             else
             {
+                while(1){
                 k = (k + (quadProber * quadProber)) % N;
                 quadProber++;
                 randFailCount++;
-                i-- ; continue;
+                if(memoizationMatrix[k] == 0)
+                {
+                    break;
+                }
+                }
+                memoizationMatrix[k] = 1;
+                output = insert(output, k + 1);
             }
         }
         else
@@ -293,18 +306,20 @@ Node *randomBST(int N)
 
     At the end of this, return Root node.
         */
-
+    printf("exiting randomBST\n");
     return output;
 }
 void avgDepth()
 {
-
+    printf("entered avgDepth\n");
     int M[4] = {10, 50, 100, 1000};
     int N[4] = {10, 50, 100, 1000};
     double matrixOfAvgDepth[4][4] = {0};
     Node *Tester;
+    printf("defined the variables\n");
     for (int m = 0; m < 4; m++)
     {
+
         for (int n = 0; n < 4; n++)
         {
             int d_total = 0;
@@ -328,6 +343,7 @@ void avgDepth()
         }
         printf("\n");
     }
+    printf("exited avgDepth\n");
 }
 
 //Problem 6
