@@ -25,7 +25,8 @@ Node *insert(Node *curr, int data)
     if (curr == NULL)
     {
         curr = makeNode(data);
-        return curr;
+       
+    
     }
     if (data < curr->data)
     {
@@ -36,6 +37,7 @@ Node *insert(Node *curr, int data)
         curr->right = insert(curr->right, data);
     }
     printf("exited insert\n");
+    return curr;
 }
 
 void print(Node *curr)
@@ -254,7 +256,7 @@ int totalDepth(Node *Tester, int StartDepth)
 Node *randomBST(int N)
 {
     printf("entered randomBST\n");
-    Node *output;
+    Node *output=NULL;
     int *memoizationMatrix;
     memoizationMatrix = (int *)malloc(sizeof(int) * N);
     printf("defined variables\n");
@@ -290,13 +292,13 @@ Node *randomBST(int N)
                 }
                 }
                 memoizationMatrix[k] = 1;
-                output = test_bst_insert(output, k + 1);
+                output = insert(output, k + 1);
             }
         }
         else
         {
             memoizationMatrix[k] = 1;
-            output = test_bst_insert(output, k + 1);
+            output = insert(output, k + 1);
         }
     } /*  Generate random number between 0 to N-1
     Check if it has been generated before
@@ -320,7 +322,7 @@ void avgDepth()
     int M[4] = {10, 50, 100, 1000};
     int N[4] = {10, 50, 100, 1000};
     double matrixOfAvgDepth[4][4] = {0};
-    Node *Tester;
+    Node *Tester=NULL;
     printf("defined the variables\n");
     for (int m = 0; m < 4; m++)
     {
