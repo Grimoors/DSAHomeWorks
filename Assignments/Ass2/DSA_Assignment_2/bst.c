@@ -270,20 +270,20 @@ int isbst(Node *T)
 }
 
 //Problem 5
-int totalDepth(Node *Tester, int StartDepth)
-{
-    //printf("entered totalDepth\n");
-    int tempL = 0, tempR = 0;
-    if (Tester->left != NULL)
-    {
-        tempL = totalDepth(Tester->left, StartDepth + 1);
-    }
-    if (Tester->right != NULL)
-    {
-        tempR = totalDepth(Tester->right, StartDepth + 1);
-    }
-    //printf("exiting totalDepth\n");
-    return (tempL + tempR + StartDepth + 1);
+// int totalDepth(Node *Tester, int StartDepth)
+// {
+//     //printf("entered totalDepth\n");
+//     int tempL = 0, tempR = 0;
+//     if (Tester->left != NULL)
+//     {
+//         tempL = totalDepth(Tester->left, StartDepth + 1);
+//     }
+//     if (Tester->right != NULL)
+//     {
+//         tempR = totalDepth(Tester->right, StartDepth + 1);
+//     }
+//     //printf("exiting totalDepth\n");
+//     return (tempL + tempR + StartDepth + 1);
 }
 Node *randomBST(int N)
 {

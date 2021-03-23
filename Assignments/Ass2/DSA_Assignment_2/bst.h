@@ -44,7 +44,7 @@ int height(Node *T);
 int isbst(Node *T);
 
 //Problem 5
-int totalDepth(Node *Tester, int StartDepth);
+//int totalDepth(Node *Tester, int StartDepth);
 Node *randomBST(int N);
 void avgDepth();
 
