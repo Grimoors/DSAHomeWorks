@@ -60,6 +60,11 @@ int main()
     {
         takeInput(&M[i], i);
     }
+    
+    for (long int i = 0; i < N; i++)
+    {
+        takeInput(&M[i], i);
+    }
 
     printf("Input was taken, now printing output");
 
