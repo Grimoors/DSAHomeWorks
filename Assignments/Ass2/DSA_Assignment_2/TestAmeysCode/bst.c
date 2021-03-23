@@ -99,40 +99,73 @@ void bstsort(Node *T)
 
 // //For Binary Search Tree
 
-int finddepth(Node *T, Node *P)
+int finddepth_calc(Node *root, Node *P, int depth)
 {
-    if ((T->data > P->data) && (T->left != NULL))
+
+    if (Node * root == NULL)
     {
-        int k = finddepth(T->left, P);
-        if (k != -1)
-        {
-            return k + 1;
-        }
+        return 0;
     }
 
+    if (Node * root == Node * P)
+    {
+        return depth;
+    }
+    if (P->data < root->data)
+    {
+
+        finddepth_calc(root->left, P,depth + 1);
+    };
+    if (P->data > root->data)
+    {
+        finddepth_calc(root->right, P,depth + 1);
+    };
     else
     {
-        if (T->data < P->data && T->right != NULL)
-        {
-            int k = finddepth(T->right, P);
-            if (k != -1)
-            {
-                return k + 1;
-            }
-        }
-        else
-        {
-            if (T->data == P->data)
-            {
-                return 0;
-            }
-            else
-            {
-                return -1;
-            }
-        }
+        printf("Error: Not found");
     }
 }
+
+void finddepth(Node *root, Node *P)
+{
+    int depth = 0;
+    printf("%d", finddepth_calc(root, P, depth));
+}
+
+// int finddepth(Node *T, Node *P)
+// {
+//     if ((T->data > P->data) && (T->left != NULL))
+//     {
+//         int k = finddepth(T->left, P);
+//         if (k != -1)
+//         {
+//             return k + 1;
+//         }
+//     }
+
+//     else
+//     {
+//         if (T->data < P->data && T->right != NULL)
+//         {
+//             int k = finddepth(T->right, P);
+//             if (k != -1)
+//             {
+//                 return k + 1;
+//             }
+//         }
+//         else
+//         {
+//             if (T->data == P->data)
+//             {
+//                 return 0;
+//             }
+//             else
+//             {
+//                 return -1;
+//             }
+//         }
+//     }
+// }
 
 //For General Binary trees - Hug the left wall until leaf reached, then go up and right method
 
@@ -471,9 +504,9 @@ int main(void)
 
     // printf("\n%d\n", isbst(Test1));
 
-    // Node *FindThis = test_findInBST(Test1, 5);
+    Node *FindThis = test_findInBST(Test1, 5);
 
-    // printf("\n%d\n", finddepth(Test1, FindThis));
+    finddepth(Test1, FindThis);
 
     // printf("\n%d\n", height(FindThis));
 
