@@ -1,4 +1,4 @@
-pow#include "SinglyLinkedList.h"
+#include "SinglyLinkedList.h"
 #include <stdlib.h>
 #include <assert.h>
 #include <stdio.h>
@@ -105,5 +105,22 @@ void DeleteAll(List *_deleteInThis, ElementType _deleteThis)
 }
 
 
+Node* reverse(Node* head)
+{
+    Node* current = head;
+    Node* prev = NULL;
+    Node* next = NULL;
+ 
+    while (current != NULL) {
+        next = current->Next;
+        current->Next = prev;
+
+        prev = current;
+
+        current = next;
+    }
+    head = prev;
+    return head;
+}
 
 //Assignment 2.1 code/end

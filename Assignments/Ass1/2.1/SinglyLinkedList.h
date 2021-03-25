@@ -11,10 +11,10 @@ typedef struct Node* PtrToNode;
 typedef PtrToNode List;
 typedef PtrToNode Position;
 
-struct Node {
+typedef struct Node {
     ElementType Element;
     Position Next;
-};
+}Node;
 
 // Creates a node and instantiates the element
 // Returns pointer to created node
@@ -36,5 +36,7 @@ void PrintList(List P); // TODO
 
 long int FindLast (List* _searchInThis,ElementType _searchForThis);
 void DeleteAll(List *_deleteInThis, ElementType _deleteThis);
+
+Node* reverse(Node* head);
 
 #endif

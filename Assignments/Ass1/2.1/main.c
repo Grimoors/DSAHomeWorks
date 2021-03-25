@@ -24,11 +24,19 @@ int main()
 	InsertAtFront(&L,4);// 4 3 2 1
 	InsertAtFront(&L,2);
 	long int test_Case= FindLast(&L,2);
+
+
+
+	Node * Reversed = reverse(L);
+	CreateEmptyList1(&Reversed);
+
 	printf("The '2' was found at %ld\n Now we will run DeleteAll \n",test_Case);
 
-	DeleteAll(&L,2);
 
-	test_Case= FindLast(&L,2);
+
+	// DeleteAll(&L,2);
+
+	test_Case= FindLast(&Reversed,2);
 	printf("After Deletion The '2' was found at %ld\n",test_Case);
 	printf("If the value was -1, deletion succeded\n");
 
