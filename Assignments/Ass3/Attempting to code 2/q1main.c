@@ -48,10 +48,9 @@ int main()
             while (1)
             {
                 char check = getchar();
-                if(check==EOF||check=='\n')
-                break;
+                if (check == EOF || check == '\n')
+                    break;
             }
-                
 
         Retry_adding:;
 
@@ -76,8 +75,8 @@ int main()
                 {
                     //printf("Entered ? region\n");
                     /* code */
-                    int posFromStart=-1;
-                    List ElemPosPoint = SearchInLinkedListofHSC(x, key, Hsc, &posFromStart);
+                    int posFromStart = -1;
+                    SearchInLinkedListofHSC(x, key, Hsc, &posFromStart);
                     printf("%d\n", posFromStart);
                     //printf("Exited ? region\n");
                 }
@@ -100,33 +99,92 @@ int main()
             free(Hsc->TheLists[i]);
         free(Hsc);
     }
-    // switch (s)
-    // {
-    //     case '+':
-    //         {
-    //             InsertToHashSCD(key, x, H);
-    //         }
-    //     break;
-    //     case '?':
-    //         {
-    //             printf("%d\n", LocationOfXinSCD(key, x, H));
-    //             //fflush(stdout);
-    //         }
-    //     break;
-    //     }
-    // }
+
     else
     {
         if (/* condition */ (mode[0] == 'L') || (mode[0] == 'l'))
         {
-            /* code */
+            PtrTohashOA Hoa = InitializeTableOA(N);
+
+            ////printf("Entering For Loop region\n");
+            for (int i = 0; i < Q; i++)
+            {
+                //printf("Entered For Loop region %d times\n",i+1);
+                char s;
+                int x;
+
+                scanf("%c %d", &s, &x);
+                while (1)
+                {
+                    char check = getchar();
+                    if (check == EOF || check == '\n')
+                        break;
+                }
+            Retry_addingOAL:;
+
+                //puts(mode);
+                //printf("%c\n", s);
+                //printf("%d\n", x);
+                //fflush(stdin);
+                int index = FindInOA(x, Hoa,false);
+
+                //printf("Entered IF region\n");
+                if (s == '+')
+                {
+                    //printf("Entered + region\n");
+                    /* code */
+                    InsertIntoOA(x, index, Hoa);
+                    //printf("Exited + region\n");
+                }
+                else
+                {
+                    /* code */
+                    if (/* condition */ s == '?')
+                    {
+                        //printf("Entered ? region\n");
+                        /* code */
+                        //int posFromStart = -1;
+                        //SearchInLinkedListofHSC(x, key, Hsc, &posFromStart);
+                        if(Hoa->TheCells[index].info==Legit)
+                        printf("%d\n", index);
+                        else
+                        printf("-1\n");
+                        //printf("Exited ? region\n");
+                    }
+                    else
+                    {
+                        printf("Please Give input again!!\n");
+                        scanf("%c %d", &s, &x);
+                        while ((getchar()) != '\n')
+                            ;
+                        goto Retry_addingOAL;
+                        /* code */
+                    }
+                }
+            }
         }
         else
         {
             /* code */
             if (/* condition */ (mode[0] == 'Q') || (mode[0] == 'q'))
             {
-                /* code */
+                PtrTohashOA Hoa = InitializeTableOA(N);
+
+                ////printf("Entering For Loop region\n");
+                for (int i = 0; i < Q; i++)
+                {
+                    //printf("Entered For Loop region %d times\n",i+1);
+                    char s;
+                    int x;
+
+                    scanf("%c %d", &s, &x);
+                    while (1)
+                    {
+                        char check = getchar();
+                        if (check == EOF || check == '\n')
+                            break;
+                    }
+                }
             }
             else
             {

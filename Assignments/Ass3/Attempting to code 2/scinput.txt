@@ -1,4 +1,4 @@
-separate-chaining
+linear-probing
 10
 12
 + 1
