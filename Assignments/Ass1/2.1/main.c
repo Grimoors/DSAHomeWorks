@@ -28,7 +28,7 @@ int main()
 
 
 	Node * Reversed = reverse(L);
-	CreateEmptyList1(&Reversed);
+	// CreateEmptyList1(&Reversed);
 
 	printf("The '2' was found at %ld\n Now we will run DeleteAll \n",test_Case);
 

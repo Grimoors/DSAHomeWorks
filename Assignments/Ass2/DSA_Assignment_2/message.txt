@@ -1,0 +1,157 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include "final.h"
+struct node *root = NULL;
+struct node *getNewNode(int val)
+{
+    struct node *newNode = malloc(sizeof(struct node));
+    newNode->data = val;
+    newNode->left = NULL;
+    newNode->right = NULL;
+
+    return newNode;
+}
+struct node *createnode(int x)
+{
+    struct node *temp;
+    temp = (struct node *)malloc(sizeof(struct node));
+    temp->left = NULL;
+    temp->right = NULL;
+    temp->data = x;
+    return temp;
+}
+struct node *insertnode(struct node *root, int val)
+{
+    if(root == NULL)
+        return getNewNode(val);
+    if(root->data < val)
+        root->right = insertnode(root->right,val);
+    else if(root->data > val)
+        root->left = insertnode(root->left,val);
+    return root;
+}
+// void insertnode(struct node *P, int x)
+// {
+//     struct node *parent;
+//     parent = root;
+//     struct node *temp = createnode(x);
+//     if (root == NULL)
+//     {
+//         root = createnode(x);
+//     }
+//     else
+//     {
+//         struct node *current = root;
+//         while (current != NULL)
+//         {
+//             if (temp->data > current->data)
+//             {
+//                 current = current->right;
+//             }
+//             else
+//             {
+//                 current = current->left;
+//             }
+//         }
+//         if (temp->data > parent->data)
+//         {
+//             parent->right = temp;
+//         }
+//         else
+//         {
+//             parent->left = temp;
+//         }
+//     }
+// }
+void inorder(struct node *root)
+{
+    if (root == NULL)
+        return;
+    inorder(root->left);
+    printf("%d ", root->data);
+    inorder(root->right);
+}
+void printlimit(struct node *P, int x, int y)
+{
+    {
+        if (P->left)
+        {
+            printlimit(P->left, x, y);
+            //P->depth=ld;
+            //ld++;
+        }
+        //d=1;
+        if (P->data >= x && P->data <= y)
+        {
+            printf("%d ", P->data);
+        }
+        if (P->right)
+        {
+            printlimit(P->right, x, y);
+            //P->depth=rd;
+            //rd++;
+        }
+    }
+}
+int getint(struct node *node, int data, int level)
+{
+    if (node == NULL)
+    {
+        return 0;
+    }
+
+    if (node->data == data)
+    {
+        return level;
+    }
+
+    int beforenode = getint(node->left, data, level + 1);
+    if (beforenode != 0)
+    {
+        return beforenode;
+    }
+
+    beforenode = getint(node->right, data, level + 1);
+    return beforenode;
+}
+int getxtop(struct node *Q, struct node *P)
+{
+    getint(Q, P->data, 1);
+}
+int maxdepth(struct node *P)
+{
+    int depth = 0;
+    if (P == NULL)
+    {
+        return depth;
+    }
+    int left = maxdepth(P->left);
+    int right = maxdepth(P->right);
+    if (left > right)
+    {
+        depth = left + 1;
+    }
+    else
+    {
+        depth = right + 1;
+    }
+    return depth;
+}
+int main()
+{
+    root=insertnode(root, 100);
+    root=insertnode(root, 50);
+    root=insertnode(root, 150);
+    root=insertnode(root, 200);
+    root=insertnode(root, 2);
+    root=insertnode(root, 5);
+    //root = insert(root,50);
+    inorder(root);
+    printf("\n\n\n");
+    printlimit(root, 0, 100);
+    printf("\n\n\n");
+    printf("%d\n", maxdepth(root));
+    printf("\n\n\n");
+    printf("%d\n", getxtop(root, root));
+    return 0;
+}
