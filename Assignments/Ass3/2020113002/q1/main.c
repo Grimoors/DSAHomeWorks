@@ -3,7 +3,7 @@
 #include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include "hash.h"
+#include "./../hash.h"
 #include <assert.h>
 #include <stdbool.h>
 

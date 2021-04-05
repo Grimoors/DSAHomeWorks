@@ -1,4 +1,4 @@
-linear-probing
+quad-probing
 10
 12
 + 1

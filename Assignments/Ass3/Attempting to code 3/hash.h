@@ -27,7 +27,7 @@ typedef hashSC *PtrTohashSC;
 PtrTohashSC
 InitializeTableSC(long int TableSize);
 
-List SearchInLinkedListofHSC(ElementType x, long int key, PtrTohashSC Hsc, long int *posFromStart);
+List SearchInLinkedListofHSC(ElementType x, long int key, PtrTohashSC Hsc, long int * posFromStart);
 
 void InsertIntoHSC(ElementType x, long int key, PtrTohashSC Hsc);
 
@@ -99,8 +99,11 @@ void InsertIntoOA(long int x, long int index, PtrTohashOA H);
 bool isPrime(long int n);
 long int nextPrime(long int N);
 
+
+
+
 typedef struct ListNodeD *ListD;
-typedef char *ElementTypeD;
+typedef char* ElementTypeD;
 typedef struct ListNodeD
 {
     ElementTypeD Element;
@@ -122,7 +125,7 @@ typedef hashSCD *PtrTohashSCD;
 PtrTohashSCD
 InitializeTableSCD(long int TableSize);
 
-ListD SearchInLinkedListofHSCD(ElementTypeD x, long int key, PtrTohashSCD Hsc, long int *posFromStart);
+ListD SearchInLinkedListofHSCD(ElementTypeD x, long int key, PtrTohashSCD Hsc, long int * posFromStart);
 
 void InsertIntoHSCD(ElementTypeD x, long int key, PtrTohashSCD Hsc);
 #endif

@@ -1,9 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include "hash.h"
 #include <assert.h>
 #include <stdbool.h>
 #include <string.h>
-#include "./hash.h"
 
 // /* For Normal LinkedList*/
 PtrTohashSC
@@ -73,24 +73,24 @@ List SearchInLinkedListofHSC(ElementType x, long int key, PtrTohashSC Hsc, long 
     List L;
     List P;
 
-    long int posCount = 0;
+    long int posCount=0;
 
     L = Hsc->TheLists[key];
     P = L->Next;
 
     //printf("Entering While Loop region\n");
-    while (P != P->Last && P->Element != x)
+    while (P!= P->Last && P->Element!=x)
     {
         //printf("Entered While Loop region %d times \n",(posCount+1));
         /* code */
         posCount++;
         //printf("Updated Counter, Now attempting P change\n");
-        P = P->Next;
+        P=P->Next;
         //printf("P Changed , exiting or iterating\n");
     }
     //printf("Exited While region\n");
 
-    if (P != P->Last && P->Element == x)
+    if( P!=P->Last && P->Element==x )
     {
         *posFromStart = posCount;
         return P;
@@ -99,13 +99,14 @@ List SearchInLinkedListofHSC(ElementType x, long int key, PtrTohashSC Hsc, long 
     {
         return NULL;
     }
+    
 }
 void InsertIntoHSC(ElementType x, long int key, PtrTohashSC Hsc)
 {
     //printf("Entered InsertHsc region\n");
     List Pos, NewCell;
     List L;
-    long int garbage = -1;
+    long int garbage=-1;
     Pos = SearchInLinkedListofHSC(x, key, Hsc, &garbage);
     if (Pos == NULL)
     {
@@ -121,9 +122,9 @@ void InsertIntoHSC(ElementType x, long int key, PtrTohashSC Hsc)
             NewCell->Next = L->Next;
             NewCell->Last = L->Last;
             NewCell->Prev = L;
-            NewCell->Element = x;
+            NewCell->Element=x;
             L->Last->Prev = NewCell;
-            L->Next = NewCell;
+            L->Next=NewCell;
         }
     }
 }
@@ -430,6 +431,8 @@ long int nextPrime(long int N)
     return prime;
 }
 
+
+
 /*Q2, Dictionary*/
 
 PtrTohashSCD
@@ -499,24 +502,24 @@ ListD SearchInLinkedListofHSCD(ElementTypeD x, long int key, PtrTohashSCD Hsc, l
     ListD L;
     ListD P;
 
-    long int posCount = 0;
+    long int posCount=0;
 
     L = Hsc->TheLists[key];
     P = L->Next;
 
     //printf("Entering While Loop region\n");
-    while (P != P->Last && P->Element != x)
+    while (P!= P->Last && P->Element!=x)
     {
         //printf("Entered While Loop region %d times \n",(posCount+1));
         /* code */
         posCount++;
         //printf("Updated Counter, Now attempting P change\n");
-        P = P->Next;
+        P=P->Next;
         //printf("P Changed , exiting or iterating\n");
     }
     //printf("Exited While region\n");
 
-    if (P != P->Last && P->Element == x)
+    if( P!=P->Last && P->Element==x )
     {
         *posFromStart = posCount;
         return P;
@@ -525,14 +528,15 @@ ListD SearchInLinkedListofHSCD(ElementTypeD x, long int key, PtrTohashSCD Hsc, l
     {
         return NULL;
     }
+    
 }
 void InsertIntoHSCD(ElementTypeD x, long int key, PtrTohashSCD Hsc)
 {
     //printf("Entered InsertHsc region\n");
     ListD Pos, NewCell;
     ListD L;
-    long int garbage = -1;
-    Pos = SearchInLinkedListofHSCD(x, key, Hsc, &garbage);
+    long int garbage=-1;
+    Pos = SearchInLinkedListofHSC(x, key, Hsc, &garbage);
     if (Pos == NULL)
     {
         NewCell = (ListD)malloc(sizeof(ListNodeD));
@@ -549,13 +553,13 @@ void InsertIntoHSCD(ElementTypeD x, long int key, PtrTohashSCD Hsc)
             NewCell->Prev = L;
             //NewCell->Element=x;//Changes to be made.
 
-            int k = strlen(x);
-            NewCell->Element = malloc(sizeof(char) * (k + 1));
-            NewCell->Element = strcpy(NewCell->Element, x);
+            int k=strlen(x);
+            NewCell->Element=malloc(sizeof(char)*(k+1));
+            NewCell->Element=strcpy(NewCell->Element,x);            
+
 
             L->Last->Prev = NewCell;
-            L->Next = NewCell;
+            L->Next=NewCell;
         }
     }
 }
-
