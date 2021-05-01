@@ -1,0 +1,7 @@
+6
+3 alice
+2 bob
+1 jake
+2 berta
+3 charlie
+4 alan
